@@ -13,10 +13,10 @@ namespace DAPM.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DAPMEntities1 : DbContext
+    public partial class DAPMEntities2 : DbContext
     {
-        public DAPMEntities1()
-            : base("name=DAPMEntities1")
+        public DAPMEntities2()
+            : base("name=DAPMEntities2")
         {
         }
     
@@ -30,7 +30,6 @@ namespace DAPM.Models
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<LichTuVan> LichTuVans { get; set; }
-        public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
         public virtual DbSet<THONGBAO> THONGBAOs { get; set; }
     }
 }

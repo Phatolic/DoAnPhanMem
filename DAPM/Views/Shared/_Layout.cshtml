@@ -35,6 +35,7 @@
     <link href="~/Content/responsive.css" rel="stylesheet" />
 </head>
 <body>
+   
     <div class="hero_area">
         <!-- header section strats -->
         <header class="header_section">
@@ -65,7 +66,7 @@
             <div class="header_bottom">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
-                        <a class="navbar-brand" href="/Home/Index" >
+                        <a class="navbar-brand" href="/Home/Index">
                             <img src="~/images/logo.png" alt="">
                         </a>
 
@@ -97,19 +98,34 @@
                                     </li>
                                 </ul>
                             </div>
+                            @{ var kh = Session["Taikhoan"] as DAPM.Models.KHACHHANG;}
                             <div class="quote_btn-container">
-                                <a href="">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>
-                                        Login
-                                    </span>
-                                </a>
-                                <a href="">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>
-                                        Sign Up
-                                    </span>
-                                </a>
+                                @if (Session["Taikhoan"] == null)
+                                {
+                                    <a href="/User/DangNhap">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>
+                                            Login
+                                        </span>
+                                    </a>
+                                    <a href="/User/DangKy">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>
+                                            Sign Up
+                                        </span>
+                                    </a>
+                                }
+
+                                @if (Session["Taikhoan"] != null)
+                                {
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#">@kh.SDT</a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="/User/DangXuat">ĐĂNG XUẤT</a>
+                                    </li>
+                                }
+
                                 <form class="form-inline">
                                     <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                                         <i class="fa fa-search" aria-hidden="true"></i>
@@ -266,7 +282,6 @@
                 </div>
             </section>
             <!-- end info_section -->
-            
             <!-- footer section -->
             <footer class="footer_section">
                 <div class="container">

@@ -17,7 +17,7 @@ namespace DAPM.Models
         public string MaTB { get; set; }
         public string Mota { get; set; }
         public Nullable<System.DateTime> NgayNhan { get; set; }
-        public string MaKH { get; set; }
+        public Nullable<int> MaKH { get; set; }
     
         public virtual KHACHHANG KHACHHANG { get; set; }
     }

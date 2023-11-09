@@ -26,10 +26,8 @@ namespace DAPM.Models
         public string SDT { get; set; }
         public Nullable<int> Tuoi { get; set; }
         public string MaCK { get; set; }
-        public Nullable<int> MaTK { get; set; }
     
         public virtual CHUYENKHOA CHUYENKHOA { get; set; }
-        public virtual TAIKHOAN TAIKHOAN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichTuVan> LichTuVans { get; set; }
     }

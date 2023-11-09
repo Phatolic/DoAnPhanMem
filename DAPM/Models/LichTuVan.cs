@@ -14,13 +14,13 @@ namespace DAPM.Models
     
     public partial class LichTuVan
     {
-        public string MaTuVan { get; set; }
+        public int MaTuVan { get; set; }
         public Nullable<System.DateTime> NgayGio { get; set; }
         public string GhiChu { get; set; }
         public Nullable<int> DonGia { get; set; }
         public string TinhTrang { get; set; }
         public string MaBS { get; set; }
-        public string MaKH { get; set; }
+        public Nullable<int> MaKH { get; set; }
     
         public virtual BACSI BACSI { get; set; }
         public virtual KHACHHANG KHACHHANG { get; set; }
