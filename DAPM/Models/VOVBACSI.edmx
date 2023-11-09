@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DAPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BACSI">
+          <Key>
+            <PropertyRef Name="MaBS" />
+          </Key>
+          <Property Name="TenBS" Type="nvarchar" MaxLength="30" />
+          <Property Name="MaBS" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="30" />
+          <Property Name="SDT" Type="varchar" MaxLength="10" />
+          <Property Name="Tuoi" Type="int" />
+          <Property Name="MaCK" Type="varchar" MaxLength="5" />
+          <Property Name="MaTK" Type="int" />
+        </EntityType>
+        <EntityType Name="CHUYENKHOA">
+          <Key>
+            <PropertyRef Name="MaCK" />
+          </Key>
+          <Property Name="MaCK" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="TenCK" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="MaHD" />
+          </Key>
+          <Property Name="MaHD" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenHD" Type="nvarchar" MaxLength="30" />
+          <Property Name="NgayLapHD" Type="date" />
+          <Property Name="MaKH" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="30" />
+          <Property Name="SDT" Type="varchar" MaxLength="10" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="30" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="Tuoi" Type="int" />
+          <Property Name="MaBHYT" Type="varchar" MaxLength="20" />
+          <Property Name="MaTK" Type="int" />
+        </EntityType>
+        <EntityType Name="LichTuVan">
+          <Key>
+            <PropertyRef Name="MaTuVan" />
+          </Key>
+          <Property Name="MaTuVan" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NgayGio" Type="date" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+          <Property Name="DonGia" Type="int" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="30" />
+          <Property Name="MaBS" Type="char" MaxLength="5" />
+          <Property Name="MaKH" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="MaTK" />
+          </Key>
+          <Property Name="MaTK" Type="int" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="10" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="THONGBAO">
+          <Key>
+            <PropertyRef Name="MaTB" />
+          </Key>
+          <Property Name="MaTB" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Mota" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayNhan" Type="date" />
+          <Property Name="MaKH" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <Association Name="FK__BACSI__MaCK__286302EC">
+          <End Role="CHUYENKHOA" Type="Self.CHUYENKHOA" Multiplicity="0..1" />
+          <End Role="BACSI" Type="Self.BACSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUYENKHOA">
+              <PropertyRef Name="MaCK" />
+            </Principal>
+            <Dependent Role="BACSI">
+              <PropertyRef Name="MaCK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BACSI__MaTK__29572725">
+          <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+          <End Role="BACSI" Type="Self.BACSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAIKHOAN">
+              <PropertyRef Name="MaTK" />
+            </Principal>
+            <Dependent Role="BACSI">
+              <PropertyRef Name="MaTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__MaKH__35BCFE0A">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHACHHANG__MaTK__2C3393D0">
+          <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAIKHOAN">
+              <PropertyRef Name="MaTK" />
+            </Principal>
+            <Dependent Role="KHACHHANG">
+              <PropertyRef Name="MaTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichTuVan__MaBS__31EC6D26">
+          <End Role="BACSI" Type="Self.BACSI" Multiplicity="0..1" />
+          <End Role="LichTuVan" Type="Self.LichTuVan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BACSI">
+              <PropertyRef Name="MaBS" />
+            </Principal>
+            <Dependent Role="LichTuVan">
+              <PropertyRef Name="MaBS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichTuVan__MaKH__32E0915F">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="LichTuVan" Type="Self.LichTuVan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="LichTuVan">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THONGBAO__MaKH__2F10007B">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="THONGBAO" Type="Self.THONGBAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="THONGBAO">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DAPMModelStoreContainer">
+          <EntitySet Name="BACSI" EntityType="Self.BACSI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHUYENKHOA" EntityType="Self.CHUYENKHOA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichTuVan" EntityType="Self.LichTuVan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THONGBAO" EntityType="Self.THONGBAO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BACSI__MaCK__286302EC" Association="Self.FK__BACSI__MaCK__286302EC">
+            <End Role="CHUYENKHOA" EntitySet="CHUYENKHOA" />
+            <End Role="BACSI" EntitySet="BACSI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BACSI__MaTK__29572725" Association="Self.FK__BACSI__MaTK__29572725">
+            <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+            <End Role="BACSI" EntitySet="BACSI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__MaKH__35BCFE0A" Association="Self.FK__HoaDon__MaKH__35BCFE0A">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHACHHANG__MaTK__2C3393D0" Association="Self.FK__KHACHHANG__MaTK__2C3393D0">
+            <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichTuVan__MaBS__31EC6D26" Association="Self.FK__LichTuVan__MaBS__31EC6D26">
+            <End Role="BACSI" EntitySet="BACSI" />
+            <End Role="LichTuVan" EntitySet="LichTuVan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichTuVan__MaKH__32E0915F" Association="Self.FK__LichTuVan__MaKH__32E0915F">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="LichTuVan" EntitySet="LichTuVan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THONGBAO__MaKH__2F10007B" Association="Self.FK__THONGBAO__MaKH__2F10007B">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="THONGBAO" EntitySet="THONGBAO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DAPMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BACSI">
+          <Key>
+            <PropertyRef Name="MaBS" />
+          </Key>
+          <Property Name="TenBS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MaBS" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Tuoi" Type="Int32" />
+          <Property Name="MaCK" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MaTK" Type="Int32" />
+          <NavigationProperty Name="CHUYENKHOA" Relationship="Self.FK__BACSI__MaCK__286302EC" FromRole="BACSI" ToRole="CHUYENKHOA" />
+          <NavigationProperty Name="TAIKHOAN" Relationship="Self.FK__BACSI__MaTK__29572725" FromRole="BACSI" ToRole="TAIKHOAN" />
+          <NavigationProperty Name="LichTuVans" Relationship="Self.FK__LichTuVan__MaBS__31EC6D26" FromRole="BACSI" ToRole="LichTuVan" />
+        </EntityType>
+        <EntityType Name="CHUYENKHOA">
+          <Key>
+            <PropertyRef Name="MaCK" />
+          </Key>
+          <Property Name="MaCK" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenCK" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BACSIs" Relationship="Self.FK__BACSI__MaCK__286302EC" FromRole="CHUYENKHOA" ToRole="BACSI" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="MaHD" />
+          </Key>
+          <Property Name="MaHD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenHD" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NgayLapHD" Type="DateTime" Precision="0" />
+          <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HoaDon__MaKH__35BCFE0A" FromRole="HoaDon" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenKH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Tuoi" Type="Int32" />
+          <Property Name="MaBHYT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MaTK" Type="Int32" />
+          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaKH__35BCFE0A" FromRole="KHACHHANG" ToRole="HoaDon" />
+          <NavigationProperty Name="TAIKHOAN" Relationship="Self.FK__KHACHHANG__MaTK__2C3393D0" FromRole="KHACHHANG" ToRole="TAIKHOAN" />
+          <NavigationProperty Name="LichTuVans" Relationship="Self.FK__LichTuVan__MaKH__32E0915F" FromRole="KHACHHANG" ToRole="LichTuVan" />
+          <NavigationProperty Name="THONGBAOs" Relationship="Self.FK__THONGBAO__MaKH__2F10007B" FromRole="KHACHHANG" ToRole="THONGBAO" />
+        </EntityType>
+        <EntityType Name="LichTuVan">
+          <Key>
+            <PropertyRef Name="MaTuVan" />
+          </Key>
+          <Property Name="MaTuVan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NgayGio" Type="DateTime" Precision="0" />
+          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DonGia" Type="Int32" />
+          <Property Name="TinhTrang" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MaBS" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BACSI" Relationship="Self.FK__LichTuVan__MaBS__31EC6D26" FromRole="LichTuVan" ToRole="BACSI" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__LichTuVan__MaKH__32E0915F" FromRole="LichTuVan" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="MaTK" />
+          </Key>
+          <Property Name="MaTK" Type="Int32" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BACSIs" Relationship="Self.FK__BACSI__MaTK__29572725" FromRole="TAIKHOAN" ToRole="BACSI" />
+          <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MaTK__2C3393D0" FromRole="TAIKHOAN" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="THONGBAO">
+          <Key>
+            <PropertyRef Name="MaTB" />
+          </Key>
+          <Property Name="MaTB" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNhan" Type="DateTime" Precision="0" />
+          <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__THONGBAO__MaKH__2F10007B" FromRole="THONGBAO" ToRole="KHACHHANG" />
+        </EntityType>
+        <Association Name="FK__BACSI__MaCK__286302EC">
+          <End Role="CHUYENKHOA" Type="Self.CHUYENKHOA" Multiplicity="0..1" />
+          <End Role="BACSI" Type="Self.BACSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUYENKHOA">
+              <PropertyRef Name="MaCK" />
+            </Principal>
+            <Dependent Role="BACSI">
+              <PropertyRef Name="MaCK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BACSI__MaTK__29572725">
+          <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+          <End Role="BACSI" Type="Self.BACSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAIKHOAN">
+              <PropertyRef Name="MaTK" />
+            </Principal>
+            <Dependent Role="BACSI">
+              <PropertyRef Name="MaTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichTuVan__MaBS__31EC6D26">
+          <End Role="BACSI" Type="Self.BACSI" Multiplicity="0..1" />
+          <End Role="LichTuVan" Type="Self.LichTuVan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BACSI">
+              <PropertyRef Name="MaBS" />
+            </Principal>
+            <Dependent Role="LichTuVan">
+              <PropertyRef Name="MaBS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__MaKH__35BCFE0A">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHACHHANG__MaTK__2C3393D0">
+          <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAIKHOAN">
+              <PropertyRef Name="MaTK" />
+            </Principal>
+            <Dependent Role="KHACHHANG">
+              <PropertyRef Name="MaTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichTuVan__MaKH__32E0915F">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="LichTuVan" Type="Self.LichTuVan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="LichTuVan">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__THONGBAO__MaKH__2F10007B">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="THONGBAO" Type="Self.THONGBAO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="THONGBAO">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DAPMEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BACSIs" EntityType="Self.BACSI" />
+          <EntitySet Name="CHUYENKHOAs" EntityType="Self.CHUYENKHOA" />
+          <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="LichTuVans" EntityType="Self.LichTuVan" />
+          <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+          <EntitySet Name="THONGBAOs" EntityType="Self.THONGBAO" />
+          <AssociationSet Name="FK__BACSI__MaCK__286302EC" Association="Self.FK__BACSI__MaCK__286302EC">
+            <End Role="CHUYENKHOA" EntitySet="CHUYENKHOAs" />
+            <End Role="BACSI" EntitySet="BACSIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BACSI__MaTK__29572725" Association="Self.FK__BACSI__MaTK__29572725">
+            <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+            <End Role="BACSI" EntitySet="BACSIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichTuVan__MaBS__31EC6D26" Association="Self.FK__LichTuVan__MaBS__31EC6D26">
+            <End Role="BACSI" EntitySet="BACSIs" />
+            <End Role="LichTuVan" EntitySet="LichTuVans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__MaKH__35BCFE0A" Association="Self.FK__HoaDon__MaKH__35BCFE0A">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHACHHANG__MaTK__2C3393D0" Association="Self.FK__KHACHHANG__MaTK__2C3393D0">
+            <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichTuVan__MaKH__32E0915F" Association="Self.FK__LichTuVan__MaKH__32E0915F">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="LichTuVan" EntitySet="LichTuVans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__THONGBAO__MaKH__2F10007B" Association="Self.FK__THONGBAO__MaKH__2F10007B">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="THONGBAO" EntitySet="THONGBAOs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DAPMModelStoreContainer" CdmEntityContainer="DAPMEntities1">
+          <EntitySetMapping Name="BACSIs">
+            <EntityTypeMapping TypeName="DAPMModel.BACSI">
+              <MappingFragment StoreEntitySet="BACSI">
+                <ScalarProperty Name="TenBS" ColumnName="TenBS" />
+                <ScalarProperty Name="MaBS" ColumnName="MaBS" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Tuoi" ColumnName="Tuoi" />
+                <ScalarProperty Name="MaCK" ColumnName="MaCK" />
+                <ScalarProperty Name="MaTK" ColumnName="MaTK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUYENKHOAs">
+            <EntityTypeMapping TypeName="DAPMModel.CHUYENKHOA">
+              <MappingFragment StoreEntitySet="CHUYENKHOA">
+                <ScalarProperty Name="MaCK" ColumnName="MaCK" />
+                <ScalarProperty Name="TenCK" ColumnName="TenCK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDons">
+            <EntityTypeMapping TypeName="DAPMModel.HoaDon">
+              <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="MaHD" ColumnName="MaHD" />
+                <ScalarProperty Name="TenHD" ColumnName="TenHD" />
+                <ScalarProperty Name="NgayLapHD" ColumnName="NgayLapHD" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="DAPMModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="Tuoi" ColumnName="Tuoi" />
+                <ScalarProperty Name="MaBHYT" ColumnName="MaBHYT" />
+                <ScalarProperty Name="MaTK" ColumnName="MaTK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LichTuVans">
+            <EntityTypeMapping TypeName="DAPMModel.LichTuVan">
+              <MappingFragment StoreEntitySet="LichTuVan">
+                <ScalarProperty Name="MaTuVan" ColumnName="MaTuVan" />
+                <ScalarProperty Name="NgayGio" ColumnName="NgayGio" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="MaBS" ColumnName="MaBS" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAIKHOANs">
+            <EntityTypeMapping TypeName="DAPMModel.TAIKHOAN">
+              <MappingFragment StoreEntitySet="TAIKHOAN">
+                <ScalarProperty Name="MaTK" ColumnName="MaTK" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THONGBAOs">
+            <EntityTypeMapping TypeName="DAPMModel.THONGBAO">
+              <MappingFragment StoreEntitySet="THONGBAO">
+                <ScalarProperty Name="MaTB" ColumnName="MaTB" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="NgayNhan" ColumnName="NgayNhan" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
