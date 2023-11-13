@@ -13,7 +13,7 @@ namespace DAPM.Controllers
     public class UserController : Controller
     {
 
-        DAPMEntities2 db = new DAPMEntities2();
+        DAPMEntities3 db = new DAPMEntities3();
         // GET: User
         [HttpGet]
         public ActionResult DangKy()
