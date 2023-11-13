@@ -2,9 +2,22 @@
 @{
     ViewBag.Title = "DangNhap";
     Layout = "~/Views/Shared/_LayoutTaiKhoan.cshtml";
-   
+    
         
 }
+
+@section head{
+    <style type="text/css">
+        body {
+            background-image: url('/images/background.jpg');
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center; /* Đảm bảo ảnh nền được căn giữa */
+            
+        }
+    </style>   
+ }
 
     <h2 style="text-align: center">ĐĂNG NHẬP</h2>
     <br />

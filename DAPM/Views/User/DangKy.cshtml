@@ -4,36 +4,49 @@
     Layout = "~/Views/Shared/_LayoutTaiKhoan.cshtml";
 }
 
-    <h2 style="text-align: center">ĐĂNG KÝ </h2>
-    <br />
-    <div class="row">
-        <div class="offset-md-1 col-md-10">
-            @using (Html.BeginForm("DangKy", "User"))
-            {@Html.ValidationSummary(true)
-            <div class="form-group">
-                <label for="name">Họ và Tên:</label> @Html.TextBox("TenKH", null, new { @class = "form-control", @id = "name", required = "required" })
-            </div>
-            <div class="form-group">
-                <label for="dienthoai">Số điện thoại:</label> @Html.TextBox("SDT", null, new { @class = "form-control", @id = "dienthoai", required = "required" })
-            </div>
-            <div class="form-group">
-                <label for="matkhau">Mật khẩu:</label> @Html.Password("MatKhau", null, new { @class = "form-control", @id = "matkhau", required = "required" })
-            </div>
-
-            <div class="form-group">
-                <label for="diachi">Địa chỉ:</label> @Html.TextBox("DiaChi", null, new { @class = "form-control", @id = "diachi" })
-            </div>
-            <div class="form-group">
-                <label for="gioitinh">Giới tính:</label> @Html.TextBox("GioiTinh", null, new { @class = "form-control", @id = "gioitinh" })
-            </div>
-            <div class="form-group">
-                <label for="ngaysinh">Ngày sinh:</label> @Html.TextBox("NgaySinh", null, new { @class = "form-control", @id = "ngaysinh", type = "date", placeholder = "mm/dd/yyyy" })
-            </div>
-            <div class="form-group">
-                <label for="bhyt">Mã BHYT:</label> @Html.TextBox("MaBHYT", null, new { @class = "form-control", @id = "bhyt", required = "required" })
-            </div>
-            <button type="submit" class="btn btn-primary">ĐĂNG KÝ</button>
+@section head{
+    <style type="text/css">
+        body {
+            background-image: url('/images/background.jpg');
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center; /* Đảm bảo ảnh nền được căn giữa */
         }
+    </style>
+}
+
+
+<h2 style="text-align: center">ĐĂNG KÝ </h2>
+<br />
+<div class="row">
+    <div class="offset-md-1 col-md-10">
+        @using (Html.BeginForm("DangKy", "User"))
+        {@Html.ValidationSummary(true)
+        <div class="form-group">
+            <label for="name">Họ và Tên:</label> @Html.TextBox("TenKH", null, new { @class = "form-control", @id = "name", required = "required" })
         </div>
+        <div class="form-group">
+            <label for="dienthoai">Số điện thoại:</label> @Html.TextBox("SDT", null, new { @class = "form-control", @id = "dienthoai", required = "required" })
+        </div>
+        <div class="form-group">
+            <label for="matkhau">Mật khẩu:</label> @Html.Password("MatKhau", null, new { @class = "form-control", @id = "matkhau", required = "required" })
+        </div>
+
+        <div class="form-group">
+            <label for="diachi">Địa chỉ:</label> @Html.TextBox("DiaChi", null, new { @class = "form-control", @id = "diachi" })
+        </div>
+        <div class="form-group">
+            <label for="gioitinh">Giới tính:</label> @Html.TextBox("GioiTinh", null, new { @class = "form-control", @id = "gioitinh" })
+        </div>
+        <div class="form-group">
+            <label for="ngaysinh">Ngày sinh:</label> @Html.TextBox("NgaySinh", null, new { @class = "form-control", @id = "ngaysinh", type = "date", placeholder = "mm/dd/yyyy" })
+        </div>
+        <div class="form-group">
+            <label for="bhyt">Mã BHYT:</label> @Html.TextBox("MaBHYT", null, new { @class = "form-control", @id = "bhyt", required = "required" })
+        </div>
+        <button type="submit" class="btn btn-primary">ĐĂNG KÝ</button>
+    }
     </div>
+</div>
 
