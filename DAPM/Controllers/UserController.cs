@@ -13,7 +13,7 @@ namespace DAPM.Controllers
     public class UserController : Controller
     {
 
-        DAPMEntities3 db = new DAPMEntities3();
+        DAPMEntities db = new DAPMEntities();
         // GET: User
         [HttpGet]
         public ActionResult DangKy()
@@ -72,6 +72,7 @@ namespace DAPM.Controllers
                 if (ModelState.IsValid)
                 {
                     var khach = db.KHACHHANGs.FirstOrDefault(k => k.SDT == kh.SDT && k.MatKhau == kh.MatKhau);
+                    
                     if (khach != null)
                     {
                         ViewBag.ThongBao = "Đã đăng nhập thành công";
