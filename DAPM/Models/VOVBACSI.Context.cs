@@ -13,10 +13,10 @@ namespace DAPM.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DAPMEntities3 : DbContext
+    public partial class DAPMEntities : DbContext
     {
-        public DAPMEntities3()
-            : base("name=DAPMEntities3")
+        public DAPMEntities()
+            : base("name=DAPMEntities")
         {
         }
     

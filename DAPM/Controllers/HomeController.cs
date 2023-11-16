@@ -26,9 +26,6 @@ namespace DAPM.Controllers
 
             return View();
         }
-        public ActionResult Datkham()
-        {
-            return View();
-        }
+        
     }
 }
