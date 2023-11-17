@@ -72,7 +72,7 @@ namespace DAPM.Controllers
                 if (ModelState.IsValid)
                 {
                     var khach = db.KHACHHANGs.FirstOrDefault(k => k.SDT == kh.SDT && k.MatKhau == kh.MatKhau);
-                    
+
                     if (khach != null)
                     {
                         ViewBag.ThongBao = "Đã đăng nhập thành công";
@@ -80,7 +80,12 @@ namespace DAPM.Controllers
                         Session["IsLoggedIn"] = true;
                     }
                     else
+                    {
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                        return RedirectToAction("DangNhap");
+                        
+                    }
+                   
                 }
             }
             return RedirectToAction("Index", "Home");

@@ -1130,16 +1130,16 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
-.dropdown-item {
-    display: block; /* Hiển thị thành block thay vì inline-block */
-    width: 100%; /* Chiều rộng 100% để điều này hoạt động trên toàn bộ dropdown */
-    text-align: left; /* Căn lề văn bản sang trái */
-}
+/*.dropdown-item {
+    display: block;*/ /* Hiển thị thành block thay vì inline-block */
+    /*width: 100%;*/ /* Chiều rộng 100% để điều này hoạt động trên toàn bộ dropdown */
+    /*text-align: left;*/ /* Căn lề văn bản sang trái */
+/*}
 .dropdown-menu {
     display: block;
-    max-height: none; /* hoặc bạn có thể đặt một giá trị cụ thể */
-    overflow: visible;
+    max-height: none;*/ /* hoặc bạn có thể đặt một giá trị cụ thể */
+    /*overflow: visible;
 }
 .dropdown-item:first-child {
-    display: block;
+    display: block;*/
 }
