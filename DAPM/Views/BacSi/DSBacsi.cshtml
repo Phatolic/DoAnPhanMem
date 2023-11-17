@@ -1,0 +1,81 @@
+﻿@model List<DAPM.Models.BACSI>
+@{
+    ViewBag.Title = "DSBacsi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .card {
+            width: 50%;
+            margin: 20px;
+        }
+
+        .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .image-container {
+            padding: 10px;
+        }
+
+         .image-container img {
+                width: 100px;
+                height: auto;
+                border-radius: 50%; 
+         }
+
+        .info-container {
+            text-align: left;
+            padding: 2px;
+            marigin-right:50px;
+        }
+        .wrapper{
+            display:flex;
+            justify-content:space-between;
+
+        }
+        .buttonDSbacsi{
+            border-radius:10px;
+            margin-right:20px;
+            margin-top:80px;
+        }
+        .wrapper-info{
+            display:flex;
+        }
+    </style>
+</head>
+<body>
+    @foreach (var bs in Model)
+    {
+        <div class="card">
+            <div class="wrapper">
+                <div class="wrapper-info">
+                    <div class="image-container">
+                        <img src="~/images/bacsi.jpg" alt="Avatar">
+                    </div>
+                    <div class="info-container">
+
+                        <p>Tên bác sĩ: @bs.TenBS</p>
+                        <p>Số điện thoại: @bs.SDT</p>
+                        <p>Chuyên khoa: @bs.CHUYENKHOA.TenCK</p>
+                       
+
+                    </div>
+                </div>
+                <div>
+                    <button class="buttonDSbacsi">
+                    <a href="@Url.Action("LayTenBS","DatKham")" >Đặt khám</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+    </body>
+</html>
+

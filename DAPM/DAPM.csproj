@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BacSiController.cs" />
     <Compile Include="Controllers\DatKhamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -195,6 +196,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\about-img.jpg" />
     <Content Include="images\background.jpg" />
+    <Content Include="images\bacsi.jpg" />
     <Content Include="images\contact-img.jpg" />
     <Content Include="images\dots.png" />
     <Content Include="images\logo.png" />
@@ -272,6 +274,7 @@
     <Content Include="Views\User\DangNhap.cshtml" />
     <Content Include="Views\User\DangXuat.cshtml" />
     <Content Include="Views\DatKham\LayTenBS.cshtml" />
+    <Content Include="Views\BacSi\DSBacsi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
