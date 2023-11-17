@@ -3,6 +3,7 @@ using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 
@@ -38,18 +39,11 @@ namespace DAPM.Controllers
             var ma_bs = bacsi.MaBS;
             tv.MaBS = ma_bs;
 
-                var khach = db.KHACHHANGs.FirstOrDefault(k => k.SDT == kh.SDT && k.MatKhau == kh.MatKhau);
-                if (khach != null)
-                {
-
-                    Session["TaiKhoan"] = kh;
-                    @tv.MaKH = @kh.MaKH;
-
-                }
-                else
-                    ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
-
-           
+            
+            var khach = db.KHACHHANGs.FirstOrDefault(k => k.SDT == kh.SDT );
+            tv.MaKH = khach.MaKH;
+                    
+            
 
             if (ModelState.IsValid)
             {
