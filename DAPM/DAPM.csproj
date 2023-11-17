@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BacSiController.cs" />
+    <Compile Include="Controllers\BenhController.cs" />
     <Compile Include="Controllers\DatKhamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -198,14 +199,23 @@
     <Content Include="images\background.jpg" />
     <Content Include="images\bacsi.jpg" />
     <Content Include="images\contact-img.jpg" />
+    <Content Include="images\CoXuongKhop.png" />
+    <Content Include="images\DaLieu.png" />
+    <Content Include="images\DinhDuong.png" />
     <Content Include="images\dots.png" />
+    <Content Include="images\HiemMuon.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\Mat.png" />
     <Content Include="images\next.png" />
+    <Content Include="images\NhiKhoa.png" />
+    <Content Include="images\PhoiHoHap.png" />
     <Content Include="images\post1.jpg" />
     <Content Include="images\post2.jpg" />
     <Content Include="images\post3.jpg" />
     <Content Include="images\post4.png" />
     <Content Include="images\prev.png" />
+    <Content Include="images\RangHamMat.png" />
+    <Content Include="images\SanPhuKhoa.png" />
     <Content Include="images\slider-img.jpg" />
     <Content Include="images\t1.png" />
     <Content Include="images\t2.png" />
@@ -215,6 +225,7 @@
     <Content Include="images\team2.jpg" />
     <Content Include="images\team3.jpg" />
     <Content Include="images\treatment-side-img.jpg" />
+    <Content Include="images\ViemGanTieuHoa.png" />
     <Content Include="Models\VOVBACSI.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>VOVBACSI.edmx</DependentUpon>
@@ -275,6 +286,7 @@
     <Content Include="Views\User\DangXuat.cshtml" />
     <Content Include="Views\DatKham\LayTenBS.cshtml" />
     <Content Include="Views\BacSi\DSBacsi.cshtml" />
+    <Content Include="Views\Benh\DSBenh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
