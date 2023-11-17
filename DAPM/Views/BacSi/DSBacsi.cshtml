@@ -51,31 +51,46 @@
     </style>
 </head>
 <body>
-    @foreach (var bs in Model)
+    
+
+    <form style="display:inline-block;padding-top:20px;" class="form-inline ml-auto" method="get" action="/BacSi/TimKiem">
+        <input class="form-control mr-sm-2" type="text" style="width:400px;border-radius:10px;" placeholder="Tìm kiếm" name="tenBacSi">
+        <button class="btn btn-outline-light" type="submit" style="background-color:#00c6a9;">Tìm kiếm </button>
+    </form>
+
+    <h5 style="padding-top:10px;">Kết quả tìm kiếm:</h5>
+    @if (Model != null && Model.Count > 0)
     {
-        <div class="card">
-            <div class="wrapper">
-                <div class="wrapper-info">
-                    <div class="image-container">
-                        <img src="~/images/bacsi.jpg" alt="Avatar">
-                    </div>
-                    <div class="info-container">
+        foreach (var bs in Model)
+        {
+            <div class="card">
+                <div class="wrapper">
+                    <div class="wrapper-info">
+                        <div class="image-container">
+                            <img src="~/images/bacsi.jpg" alt="Avatar">
+                        </div>
+                        <div class="info-container">
 
-                        <p>Tên bác sĩ: @bs.TenBS</p>
-                        <p>Số điện thoại: @bs.SDT</p>
-                        <p>Chuyên khoa: @bs.CHUYENKHOA.TenCK</p>
-                       
+                            <p>Tên bác sĩ: @bs.TenBS</p>
+                            <p>Số điện thoại: @bs.SDT</p>
+                            <p>Chuyên khoa: @bs.CHUYENKHOA.TenCK</p>
 
+
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <button class="buttonDSbacsi">
-                    <a href="@Url.Action("LayTenBS","DatKham")" >Đặt khám</a>
-                    </button>
+                    <div>
+                        <button class="buttonDSbacsi">
+                            <a href="@Url.Action("LayTenBS", "DatKham")">Đặt khám</a>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     }
-    </body>
+    else
+    {
+        <p>Không tìm thấy sản phẩm nào.</p>
+    }
+</body>
 </html>
 

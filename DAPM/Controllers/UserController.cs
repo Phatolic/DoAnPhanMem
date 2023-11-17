@@ -83,19 +83,53 @@ namespace DAPM.Controllers
                     {
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
                         return RedirectToAction("DangNhap");
-                        
+
                     }
-                   
+
                 }
             }
             return RedirectToAction("Index", "Home");
 
         }
-        
+
         public ActionResult DangXuat()
         {
             Session.Remove("Taikhoan");
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
+        }
+
+        
+        public ActionResult LayThongTinKH()
+        {
+            var kh = Session["TaiKhoan"] as KHACHHANG;
+            if (kh != null)
+            {
+                var fullUserInfo = db.KHACHHANGs
+                             .FirstOrDefault(k => k.SDT == kh.SDT && k.MatKhau == kh.MatKhau);
+
+                // Kiểm tra nếu thông tin user tìm thấy
+                if (fullUserInfo != null)
+                {
+                    // Cập nhật session với tất cả thông tin KH
+                    Session["TaiKhoan"] = fullUserInfo;
+
+                    // Truyền thông tin vào view
+                    return View(fullUserInfo);
+                }
+                else
+                {
+                    // Nếu người dùng ko tìm thấy
+                    // Chuyển hướng về trang đăng nhập
+                    return RedirectToAction("DangNhap");
+                }
+
+            }
+            else
+            {
+                // Nếu người dùng ko tìm thấy
+                // Chuyển hướng về trang đăng nhập
+                return RedirectToAction("DangNhap");
+            }
         }
     }
 }
