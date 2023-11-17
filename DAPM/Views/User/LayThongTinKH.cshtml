@@ -1,0 +1,33 @@
+﻿@model DAPM.Models.KHACHHANG
+@{
+    ViewBag.Title = "LayThongTinKH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Thông tin tài khoản</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>Họ và tên:</dt>
+                <dd>@Model.TenKH</dd>
+                <dt>Số điện thoại:</dt>
+                <dd>@Model.SDT</dd>
+                <dt>Mật khẩu:</dt>
+                <dd>@Model.MatKhau</dd>
+                <dt>Địa chỉ:</dt>
+                <dd>@Model.DiaChi</dd>
+                <dt>Giới tính:</dt>
+                <dd>@Model.GioiTinh</dd>
+                <dt>Ngày sinh:</dt>
+                <dd>@Model.NgaySinh.Value.ToString("dd/MM/yyyy")</dd>
+                <dt>Mã BHYT:</dt>
+                <dd>@Model.MaBHYT</dd>
+
+
+                <!-- Add other properties as needed -->
+            </dl>
+        </div>
+    </div>
+
+

@@ -27,5 +27,18 @@ namespace DAPM.Controllers
 
             return PartialView(dsBacsi);
         }
+
+        public ActionResult TimKiem(string tenBacSi)
+        {
+            // Thực hiện tìm kiếm sản phẩm theo tên trong cơ sở dữ liệu
+            var danhSachBacSi = db.BACSIs.Where(s => s.TenBS.Contains(tenBacSi)).ToList();
+
+            // Trả về view kết quả tìm kiếm với danh sách sản phẩm
+            return View("DSBacsi", danhSachBacSi);
+        }
+        public ActionResult KetQuaTimKiem(List<BACSI> danhSachBacSi)
+        {
+            return View();
+        }
     }
 }
