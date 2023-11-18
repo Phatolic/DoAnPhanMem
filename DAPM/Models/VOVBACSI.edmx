@@ -290,7 +290,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DAPMEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DAPMEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BACSIs" EntityType="Self.BACSI" />
           <EntitySet Name="CHUYENKHOAs" EntityType="Self.CHUYENKHOA" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
@@ -323,7 +323,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DAPMModelStoreContainer" CdmEntityContainer="DAPMEntities">
+        <EntityContainerMapping StorageEntityContainer="DAPMModelStoreContainer" CdmEntityContainer="DAPMEntities1">
           <EntitySetMapping Name="BACSIs">
             <EntityTypeMapping TypeName="DAPMModel.BACSI">
               <MappingFragment StoreEntitySet="BACSI">

@@ -13,7 +13,7 @@ namespace DAPM.Controllers
     public class UserController : Controller
     {
 
-        DAPMEntities db = new DAPMEntities();
+        DAPMEntities1 db = new DAPMEntities1();
         // GET: User
         [HttpGet]
         public ActionResult DangKy()
@@ -121,16 +121,16 @@ namespace DAPM.Controllers
                 else
                 {
                     // Nếu người dùng ko tìm thấy
-                    // Chuyển hướng về trang đăng nhập
-                    return RedirectToAction("DangNhap");
+                    // Chuyển hướng về trang chủ
+                    return RedirectToAction("Index","Home");
                 }
 
             }
             else
             {
                 // Nếu người dùng ko tìm thấy
-                // Chuyển hướng về trang đăng nhập
-                return RedirectToAction("DangNhap");
+                // Chuyển hướng về trang chủ
+                return RedirectToAction("Index","Home");
             }
         }
     }

@@ -8,6 +8,7 @@
 @{ var kh = Session["Taikhoan"] as DAPM.Models.KHACHHANG;}
 <div class="row">
     <div class="offset-md-1 col-md-10">
+        
         @using (Html.BeginForm("LayTenBS", "DatKham", FormMethod.Post))
         {@Html.ValidationSummary(true)
         if (kh != null)
@@ -29,7 +30,7 @@
             <div class="form-group">
                 <label for="tenbacsi" >Tên Bác Sĩ:</label>
                 <div style="display:inline-block;max-width:300px;">
-                    @Html.ListBox("TenBS", new SelectList(Model), new { @class = "form-control", @id = "tenbacsi", required = "required",style="width:100%;"})
+                    @Html.ListBox("TenBS", new SelectList(Model), new { @class = "form-control", @id = "tenbacsi", required = "required"})
                 </div>
             </div>
 
