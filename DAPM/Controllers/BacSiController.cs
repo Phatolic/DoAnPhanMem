@@ -11,7 +11,7 @@ namespace DAPM.Controllers
     public class BacSiController : Controller
     {
         // GET: BacSi
-        DAPMEntities1 db = new DAPMEntities1();
+        DAPMEntities db = new DAPMEntities();
         private List<BACSI> LayDSBacsi()
         {
             var dsBacsi = db.BACSIs.Include(bacsi => bacsi.CHUYENKHOA)

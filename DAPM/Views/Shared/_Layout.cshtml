@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
     <!-- Basic -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,11 +34,11 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="~/Content/responsive.css" rel="stylesheet" />
-  
 
+    <link rel="stylesheet" href="~/Content/dropdown.css" />
 </head>
 <body>
-   
+
     <div class="hero_area">
         <!-- header section strats -->
         <header class="header_section">
@@ -56,7 +57,7 @@
                                 Email : Dapm@gmail.com
                             </span>
                         </a>
-                        
+
                     </div>
                 </div>
             </div>
@@ -82,7 +83,7 @@
                                         <a class="nav-link" href="/BacSi/DSBacSi">Bác Sĩ</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="testimonial.html">Bệnh Thường Gặp</a>
+                                        <a class="nav-link" href="/Benh/DSBenh">Bệnh Thường Gặp</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/DatKham/LayTenBS">Tư Vấn Khám Bệnh</a>
@@ -91,52 +92,43 @@
                                         <a class="nav-link" href="/Home/About"> Về Chúng Tôi</a>
                                     </li>
 
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/Home/Contact">Liên Hệ</a>
-                                    </li>
                                 </ul>
                             </div>
                             @{ var kh = Session["Taikhoan"] as DAPM.Models.KHACHHANG;}
-                        <div class="quote_btn-container">
-                            @if (Session["Taikhoan"] == null)
-                            {
-                                <a href="/User/DangNhap">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>
-                                        Đăng Nhập
-                                    </span>
-                                </a>
-                                <a href="/User/DangKy">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>
-                                        Đăng Ký
-                                    </span>
-                                </a>
-                            }
-                            @if (Session["Taikhoan"] != null)
-                            {
-                                <div class="dropdown show">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        @kh.SDT
-                                       
+                            <div class="quote_btn-container">
+                                @if (Session["Taikhoan"] == null)
+                                {
+                                    <a href="/User/DangNhap">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>
+                                            Đăng Nhập
+                                        </span>
                                     </a>
+                                    <a href="/User/DangKy">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>
+                                            Đăng Ký
+                                        </span>
+                                    </a>
+                                }
+                                @if (Session["Taikhoan"] != null)
+                                {
+                                    <div class="dropdown show">
+                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            @kh.SDT
+                                        </a>
 
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="/User/LayThongTinKH" >Thông tin tài khoản</a>
-                                        <a class="dropdown-item" href="/User/DangXuat">Đăng Xuất</a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" href="/User/LayThongTinKH">Thông tin tài khoản</a>
+                                            <a class="dropdown-item" href="/User/DangXuat">Đăng Xuất</a>
+                                        </div>
                                     </div>
-                                </div>
-                             }
+                                }
 
 
-                            <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                        </div>
+                                
+                            </div>
                         </div>
                     </nav>
                 </div>
@@ -145,7 +137,7 @@
         <!-- end header section -->
         <div class="container body-content">
             @RenderBody()
-           <br/>
+            <br />
             <!-- info section -->
             <section class="info_section ">
                 <div class="container">
@@ -155,38 +147,31 @@
                                 <img src="~/images/logo.png" alt="">
                             </a>
                         </div>
-                        <div class="info_form">
-                            <form action="">
-                                <input type="email" placeholder="Your email">
-                                <button>
-                                    Subscribe
-                                </button>
-                            </form>
-                        </div>
+                        
                     </div>
                     <div class="info_bottom layout_padding2">
                         <div class="row info_main_row">
                             <div class="col-md-6 col-lg-3">
                                 <h5>
-                                    Address
+                                    Địa chỉ
                                 </h5>
                                 <div class="info_contact">
                                     <a href="">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                                         <span>
-                                            Location
+                                            Vị trí
                                         </span>
                                     </a>
                                     <a href="">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
                                         <span>
-                                            Call +01 1234567890
+                                            Số điện thoại : 0903455799
                                         </span>
                                     </a>
                                     <a href="">
                                         <i class="fa fa-envelope"></i>
                                         <span>
-                                            demo@gmail.com
+                                            Email : Dapm@gmail.com
                                         </span>
                                     </a>
                                 </div>
@@ -207,32 +192,28 @@
                             </div>
                             <div class="col-md-6 col-lg-3">
                                 <div class="info_links">
-                                    <h5>
-                                        Useful link
-                                    </h5>
+                                    
                                     <div class="info_links_menu">
-                                        <a class="active" href="index.html">
-                                            Home
+                                        <a class="active" href="/Home/Index">
+                                            TRANG CHỦ
                                         </a>
-                                        <a href="about.html">
-                                            About
+                                        
+                                        <a href="/BacSi/DSBacSi">
+                                            BÁC SĨ
                                         </a>
-                                        <a href="treatment.html">
-                                            Treatment
+                                        <a href="/Benh/DSBenh">
+                                            BỆNH THƯỜNG GẶP
                                         </a>
-                                        <a href="doctor.html">
-                                            Doctors
+                                        <a href="/DatKham/LayTenBS">
+                                            TƯ VẤN
                                         </a>
-                                        <a href="testimonial.html">
-                                            Testimonial
-                                        </a>
-                                        <a href="contact.html">
-                                            Contact us
+                                        <a href="/Home/About">
+                                            VỀ CHÚNG TÔI
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -242,8 +223,8 @@
             <footer class="footer_section">
                 <div class="container">
                     <p>
-                        &copy; <span id="displayYear"></span> All Rights Reserved 
-                        
+                        &copy; <span id="displayYear"></span> Đã đăng ký bản quyền
+
                     </p>
                 </div>
             </footer>

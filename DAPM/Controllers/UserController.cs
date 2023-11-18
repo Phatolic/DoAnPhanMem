@@ -13,7 +13,7 @@ namespace DAPM.Controllers
     public class UserController : Controller
     {
 
-        DAPMEntities1 db = new DAPMEntities1();
+        DAPMEntities db = new DAPMEntities();
         // GET: User
         [HttpGet]
         public ActionResult DangKy()
@@ -44,6 +44,8 @@ namespace DAPM.Controllers
                     ModelState.AddModelError(String.Empty, "Số điện thoại đã được sử dụng");
                 if (mabhyt != null)
                     ModelState.AddModelError(String.Empty, "Mã BHYT đã tồn tại");
+
+
                 if (ModelState.IsValid)
                 {
                     db.KHACHHANGs.Add(kh);

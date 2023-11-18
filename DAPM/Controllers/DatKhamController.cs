@@ -12,7 +12,7 @@ namespace DAPM.Controllers
     public class DatKhamController : Controller
     {
         // GET: DatKham
-        DAPMEntities1 db = new DAPMEntities1();
+        DAPMEntities db = new DAPMEntities();
         
         [HttpGet]
         public ActionResult LayTenBS()
